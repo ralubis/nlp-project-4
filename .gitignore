@@ -1,0 +1,4 @@
+export_project_vars.sh
+stanford-corenlp-full-2018-10-05
+__pycache__
+*.pyc
