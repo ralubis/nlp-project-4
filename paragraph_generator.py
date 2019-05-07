@@ -22,21 +22,19 @@ def get_random_paragraph(story_number=None):
         story_number = random.randint(1,209)
     print(story_number)
     with open("stories/" + NUM.format(story_number) + ".txt", "r") as f:
-        data = f.readlines()
+        data = [x.strip() for x in f.readlines()]
         story = []
         paragraph = []
         for line in data:
-            if line != "\n":
-                paragraph.append(line.strip())
-            elif len(paragraph) > 15:
+            if line.endswith('.') and len(paragraph) >= 16:
+                paragraph.append(line)
                 story.append(' '.join(paragraph))
                 paragraph = []
-            else:
-                pass
-        if len(story) == 0:
-            return ' '.join(paragraph)
+            elif line != '':
+                paragraph.append(line)
+        if len(paragraph) > 0:
+            story.append(' '.join(paragraph))
     return story[random.randint(0,len(story)) - 1]
-
 
 def main():
     print(get_random_paragraph())
