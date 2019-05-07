@@ -17,7 +17,7 @@ if __name__ == "__main__":
         if pos in {"JJ", "JJR", "JJS"}:
             prompt = "Type an adjective: "
         elif pos in {"RB", "RBR", "RBS"}:
-            prompt = "Type an adjective: "
+            prompt = "Type an adverb: "
         elif pos in {"VB", "VBD", "VBG", "VBN", "VBP", "VBZ"}:
             prompt = "Type a verb: "
         else:
