@@ -8,6 +8,8 @@ import numpy as np
 os.environ['CORENLP_HOME'] = os.path.join(os.getcwd(), 'stanford-corenlp-full-2018-10-05/')
 nlpClient = CoreNLPClient(timeout=30000, memory='16G', output_format='json')
 
+BLANK_TOKEN = '_'
+
 def generate_blanks(text):
     """
     given an input pargraph, generate one random blank per sentence
@@ -29,7 +31,7 @@ def generate_blanks(text):
                 #print("word to be removed:", s['tokens'][index])
                 temp = [index, s['tokens'][index]['originalText'], s['tokens'][index]['pos']]
                 removed.append(temp)
-                s['tokens'][index]['word'] = "_____"
+                s['tokens'][index]['word'] = BLANK_TOKEN
                 break
 
     new_text = []
@@ -46,7 +48,7 @@ def fillin_blanks(new_text, removed):
     todo: refactor 
     """
     for i in range(len(removed)):
-        new_text = re.sub("_____", removed[i][-1], new_text, count=1)
+        new_text = re.sub(BLANK_TOKEN, removed[i][-1], new_text, count=1)
     return new_text
 
 

@@ -23,6 +23,7 @@ def do_ai_madlib(text_with_blanks, blank_token):
             mask_idxs.append(i)
 
     model.eval()
+    print(tokens)
     for i in mask_idxs:
         # convert tokens to their index in the "vocabulary"
         token_ids = tokenizer.convert_tokens_to_ids(tokens)
@@ -37,8 +38,9 @@ def do_ai_madlib(text_with_blanks, blank_token):
         tokens[i] = '__' + tokens[i] + '__'
     return ' '.join(tokens).replace(' ##', '')
 
-with open('../frogking.txt', 'r') as f:
-    para = ' '.join(list(map(str.strip, f.readlines())))
-para = manual_mask(para, '_')
+if __name__ == '__main__':
+    with open('../frogking.txt', 'r') as f:
+        para = ' '.join(list(map(str.strip, f.readlines())))
+    para = manual_mask(para, '_')
 
-print(do_ai_madlib(para, '_'))
+    print(do_ai_madlib(para, '_'))
