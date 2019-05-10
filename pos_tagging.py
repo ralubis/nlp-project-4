@@ -39,7 +39,6 @@ def generate_blanks(text):
         for t in s['tokens']:
             new_text += [t['word']]
 
-    print("removed pos", removed)
     return removed, ' '.join(new_text)
 
 

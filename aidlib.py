@@ -23,7 +23,6 @@ def do_ai_madlib(text_with_blanks, blank_token):
             mask_idxs.append(i)
 
     model.eval()
-    print(tokens)
     for i in mask_idxs:
         # convert tokens to their index in the "vocabulary"
         token_ids = tokenizer.convert_tokens_to_ids(tokens)

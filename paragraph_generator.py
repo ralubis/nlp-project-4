@@ -20,7 +20,6 @@ def generate_stories():
 def get_random_paragraph(story_number=None):
     if story_number is None:
         story_number = random.randint(1,209)
-    print(story_number)
     with open("stories/" + NUM.format(story_number) + ".txt", "r") as f:
         data = [x.strip() for x in f.readlines()]
         story = []
